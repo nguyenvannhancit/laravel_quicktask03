@@ -14,3 +14,14 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::resource('task', 'TaskController');
+
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('register', ['as' => 'getRegister', 'uses' => 'RegisterController@getRegister']);
+    Route::post('register', ['as' => 'postRegister', 'uses' => 'RegisterController@postRegister']);
+    Route::get('login', ['as' => 'showloginform', 'uses' => 'LoginController@showLoginForm']);
+    Route::post('login', ['as' => 'login', 'uses' => 'LoginController@Login']);
+    Route::get('logout', ['as' => 'logout', 'uses' => 'LoginController@logout']);
+});
+
+
